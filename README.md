@@ -1,2 +1,7 @@
-# S6ProjetWeb
-Projet WEB du semestre 6
+# Install
+
+`npm install`
+
+# Run
+
+`npm start`

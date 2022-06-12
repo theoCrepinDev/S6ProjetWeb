@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliothèque EFREI</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load Vue followed by Vue Router -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <router-link to="/loginsingup" v-if="utilisateurConnecte === -1"><img src="./images/logoProjet.png" id="logo"></router-link>
+            <router-link to="/accueil" v-else><img src="./images/logoProjet.png" id="logo"></router-link>
+            <div id="headerNavigationMenu">
+                <div id="menuPhrase">
+                    <nav v-if="utilisateurConnecte !== -1" id="menuNavigationConnecte">
+                        <router-link to="/Catalogue">Catalogue</router-link>
+                        <router-link to="/panier">Panier</router-link>
+                        <router-link to="/deconnexion">Deconnexion</router-link>
+                        <router-link to="/rechercher">Rechercher</router-link>
+                    </nav>
+                    <nav v-if="utilisateurConnecte === -1" id="menuNavigationDeconnecte">
+                        <router-link to="/loginsingup">Connexion / Inscription</router-link>
+                    </nav>
+                </div>
+                <div id="phraseMenu" v-if="utilisateurConnecte !== -1">
+                    <p>Bienvenue {{prenomUtilisateurConnecte}} {{nomUtilisateurConnecte}}</p>
+                </div>
+
+                
+            </div>
+        </header>
+        <main>
+            <router-view
+                :user="user"
+                :utilisateur-connecte="utilisateurConnecte"
+                :nom-utilisateur-connecte="nomUtilisateurConnecte"
+                :prenom-utilisateur-connecte="prenomUtilisateurConnecte"
+                :livres = 'livres'
+                :user-panier-livres="userPanierLivres"
+                @login="login"
+                @deconnexion="deconnexion"
+                @recuperer-tous-livres="recupererTousLivres"
+                @rechercher-livre="rechercherLivre"
+                @mettre-a-jour-livre="mettreAJourLivre"
+                @supprimer-livre="supprimerLivre"
+                @ajout-livre-panier="ajoutLivrePanier"
+                @recuperer-livre-panier="recupererLivrePanier"
+                @supprimer-livre-panier="supprimerLivrePanier"
+                @modifier-quantite-panier="enregisterModif"
+                @ajouter-livre-catalogue="ajouterLivreCatalogue"
+                @confirmer-panier="confirmerPanier"
+            ></router-view>
+        </main>
+    </div>
+    <script src="/vue-application.js"></script>
+</body>
+</html>

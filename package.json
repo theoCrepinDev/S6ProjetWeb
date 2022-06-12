@@ -1,0 +1,27 @@
+{
+  "name": "projet",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^5.0.4",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.4",
+    "debug": "^2.6.9",
+    "express": "^4.16.1",
+    "express-session": "^1.17.1",
+    "http-errors": "^1.6.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "route": "^0.2.5",
+    "sequelize": "^6.19.0"
+  }
+}
